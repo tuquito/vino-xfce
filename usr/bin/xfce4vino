@@ -1,0 +1,9 @@
+#!/bin/bash
+autostart=$(gconftool-2 --get /desktop/gnome/remote_access/enabled)
+if [ "$autostart" = "true" ]; then
+ /usr/lib/vino/vino-server & exit 0
+fi
+
+if [ "$autostart" = "false" ]; then
+  exit 0
+fi

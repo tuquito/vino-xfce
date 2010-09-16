@@ -1,0 +1,11 @@
+Source: vino-xfce
+Section: x11
+Priority: optional
+Maintainer: Mario Colque <mario@tuquito.org.ar>
+Build-Depends: debhelper (>= 5.0.0)
+Standards-Version: 3.8.3
+
+Package: vino-xfce
+Depends: vino
+Architecture: all 
+Description:  Allows Xfce to use vino just like in Gnome.

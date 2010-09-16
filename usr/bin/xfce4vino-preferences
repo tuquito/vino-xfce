@@ -1,0 +1,31 @@
+#!/bin/bash
+if pidof vino-server | grep [0-9] > /dev/null
+then
+	autostarted="true"
+else
+	/usr/lib/vino/vino-server &
+fi 
+vino-preferences
+autostart=$(gconftool-2 --get /desktop/gnome/remote_access/enabled)
+if pidof vino-server | grep [0-9] > /dev/null
+then
+	autostarted="true"
+else
+	autostarted="false"
+fi
+if [ "$autostarted" = "false" ] && [ "$autostart" = "true" ]; then
+ /usr/lib/vino/vino-server & exit 0
+fi
+if pidof vino-server | grep [0-9] > /dev/null
+then
+	autostarted="true"
+else
+	autostarted="false"
+fi
+
+if [ "$autostarted" = "true" ] && [ "$autostart" = "false" ]; then
+ killall vino-server
+ exit 0
+fi
+
+
